@@ -1,0 +1,21 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-container h1 {
+  margin-bottom: 16px;
+}
+
+.dashboard-container p {
+  margin-bottom: 24px;
+  font-size: 1.1em;
+}
+
+.dashboard-container button {
+  margin: 8px 0;
+  width: 180px;
+  font-size: 1em;
+}
