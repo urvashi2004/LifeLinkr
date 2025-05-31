@@ -22,7 +22,8 @@ export default function EditEmployee() {
     async function fetchEmployee() {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:5000/api/employees`);
+        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const res = await fetch(`${API_URL}/api/employees`);
         if (res.ok) {
           const data = await res.json();
           const emp = data.find(e => String(e.f_Id) === String(id) || String(e.id) === String(id));
@@ -94,7 +95,8 @@ export default function EditEmployee() {
 
     try {
       // You need to implement the backend PUT/PATCH route for updating
-      const res = await fetch(`http://localhost:5000/api/employees/${id}`, {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const res = await fetch(`${API_URL}/api/employees/${id}`, {
         method: 'PUT',
         body: formData
       });

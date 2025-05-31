@@ -11,7 +11,8 @@ export default function EmployeeList() {
     async function fetchEmployees() {
       setLoading(true);
       try {
-        const res = await fetch("http://localhost:5000/api/employees");
+        const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+        const res = await fetch(`${API_URL}/api/employees`);
         if (res.ok) {
           const data = await res.json();
           setEmployees(data);
@@ -190,7 +191,8 @@ export default function EmployeeList() {
                         if (!window.confirm('Are you sure you want to delete this employee?')) return;
                         const empId = emp.id || emp.f_Id;
                         try {
-                          const res = await fetch(`http://localhost:5000/api/employees/${empId}` , { method: 'DELETE' });
+                          const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+                          const res = await fetch(`${API_URL}/api/employees/${empId}` , { method: 'DELETE' });
                           if (res.ok) {
                             alert('Employee deleted successfully!');
                             setEmployees(prev => prev.filter(e => (e.id || e.f_Id) !== empId));
